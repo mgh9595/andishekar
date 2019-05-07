@@ -1,1 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url(./assets/farsi/iransanse/css/fontiran.css);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+  font-family: IRANSans !important;
+}
+body,html{
+  height: 100%;
+}
+.hp_rastchin{
+  direction: rtl;
+  height: 100%;
+}
+.hp_input_content{
+  text-align: center;
+  margin-bottom: 13px;
+}
+.hp_input_content>input{
+  padding-bottom: 5px;
+  /*direction: ltr;*/
+  width: 100%;
+  outline: none;
+  border:none;
+  border-bottom: 1px solid gray;
+  caret-color:#e9c500;
+  transition: width 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+}
+.hp_input_content>input::placeholder{
+  font-size: 15px;
+  direction: rtl;
+  color: #808080b0;
+}
+/*.hp_input_content>input:focus {*/
+/*  width: 100%;*/
+/*outline: none;*/
+/*  border-bottom: 2px solid #e9c500;*/
+/*}*/
+
+.siteview {
+  padding: 30% 15% 10% 15%;
+  height: 100%;
+}
+.mgh_title {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 2px solid #e9c500;
+  padding: 10px;
+}
+
+button.hp_button{
+  width: 100%;
+  background: #f7d104;
+  border: none;
+  border-radius: 3px;
+  color: #212536;
+  margin-top: 16px;
+  padding: 5px;
+}
+button.hp_button:hover,button.hp_button:active,button.hp_button:focus{
+  background:#e9c500 ;
+     }
+.hp_input_contents{
+  height: 240px}
