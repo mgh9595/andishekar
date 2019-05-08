@@ -17,7 +17,7 @@ time, mark, audio, video{
   font-family: IRANSans !important;
 }
 body,html{
-  height: 100%;
+  height: 110%;
 }
 .hp_rastchin{
   direction: rtl;
@@ -26,32 +26,54 @@ body,html{
 .hp_input_content{
   text-align: center;
   margin-bottom: 13px;
+  position: relative;
 }
+ .hp_input_content img {
+   left: 16px;
+   top: 50%;
+   transform: translateY(-65%);
+   width: 20px;
+   /* height: 40px; */
+   position: absolute;
+   z-index: 9;
+ }
 .hp_input_content>input{
-  padding-bottom: 5px;
-  /*direction: ltr;*/
-  width: 100%;
+  padding: 5px 5px 5px 25px;
+  direction: ltr;
+  width:90%;
   outline: none;
   border:none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1.5px solid #cccccc;
+  -webkit-border-radius: 0;
   caret-color:#e9c500;
   transition: width 0.3s ease;
-  -webkit-transition: width 0.3s ease;
+  -webkit-transition: width 0.6s ease;
+}
+.hp_input_content>input.mgh-submit{
+
+  border-bottom: 2px solid red;
+}
+.hp_input_content>input.mgh-invalid_submit{
+
+  border-bottom: 2px solid #009f00;
 }
 .hp_input_content>input::placeholder{
   font-size: 15px;
   direction: rtl;
   color: #808080b0;
 }
-/*.hp_input_content>input:focus {*/
-/*  width: 100%;*/
-/*outline: none;*/
-/*  border-bottom: 2px solid #e9c500;*/
-/*}*/
+.hp_input_content>input:focus {
+  /*width: 100%;*/
+outline: none;
+  border-bottom: 2px solid #e9c500;
+  padding-bottom: 4.5px;
+}
 
 .siteview {
-  padding: 30% 15% 10% 15%;
+  padding: 10% 5% 10% 5%;
   height: 100%;
+  width: 100%;
+  display: block;
 }
 .mgh_title {
   text-align: center;
@@ -67,12 +89,33 @@ button.hp_button{
   background: #f7d104;
   border: none;
   border-radius: 3px;
-  color: #212536;
-  margin-top: 16px;
+  color: rgba(33, 33, 33, 0.69);
+  margin-top: 25px;
   padding: 5px;
+  height: 50px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  outline: none;
 }
 button.hp_button:hover,button.hp_button:active,button.hp_button:focus{
-  background:#e9c500 ;
+  background: #dfbd00;
      }
 .hp_input_contents{
   height: 240px}
+.mgh_auth_change {
+  text-align: center;
+  margin: 20px 15px;
+}
+.mgh_auth_change a ,.mgh_forgot_pass a{
+color: #dcba00 !important;
+  font-weight: 500!important;
+  /*text-decoration: underline!important;*/
+  cursor: pointer;
+}
+.mgh_forgot_pass{
+  text-align: right;
+  margin: 20px 0;
+}
+a{
+  text-decoration: none!important;
+}

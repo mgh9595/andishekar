@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren:'./pages/pages.module#PagesModule'
   } ,
   {
-    path:'authentication',
+    path:'auth',
     loadChildren:'./authentication/authentication.module#AuthenticationModule'
   }
 ];

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-12 col-sm-12" >
+    <div class="mgh_title">فراموشی رمز عبور</div>
+    <form [formGroup]="forgetPass" (ngSubmit)="onForgetPass()">
+      <div class="hp_input_contents">
+        <div class="hp_input_content" >
+          <input type="text" placeholder="ایمیل " id="email" formControlName="email" class="{{((forgetPass.get('email').hasError('required')||forgetPass.get('email').hasError('email'))&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
+          <img src="./assets/icons/icons8-important-mail-64 (1).png" >
+        </div>
+      </div>
+      <ng-container *ngFor="let err of errors">
+        <div class="hp_errors alert-danger" *ngIf="err">{{err}}</div>
+      </ng-container>
+      <button class="hp_button" type="submit" >ارسال ایمیل</button>
+    </form>
+
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 col-sm-12" >
+    <div class="mgh_auth_change">
+      <span>آیا حساب ندارید؟</span><a routerLink="/auth/register">   ثبت حساب کنید</a>
+    </div>
+    <div class="mgh_auth_change">
+      <span>آیا حساب دارید؟</span><a routerLink="/auth/login">   وارد شوید</a>
+    </div>
+
+
+  </div>
+</div>

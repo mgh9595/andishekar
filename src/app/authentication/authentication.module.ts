@@ -4,19 +4,24 @@ import { AuthenticationComponent } from './authentication.component';
 import {RouterModule, Routes} from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ForgetPassComponent } from './forget-pass/forget-pass.component';
 const routes: Routes = [
   {
     path: '',
     component: AuthenticationComponent,
     children:[
       {
-        path:'signin',
+        path:'login',
         component:LoginComponent
       },
       {
-        path:'signup',
+        path:'register',
         component:NewaccountComponent
+      },
+      {
+        path:'forgetPass',
+        component:ForgetPassComponent
       },
     ]
   },
@@ -28,11 +33,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AuthenticationComponent, LoginComponent, NewaccountComponent],
+  declarations: [AuthenticationComponent, LoginComponent, NewaccountComponent, ForgetPassComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthenticationModule { }

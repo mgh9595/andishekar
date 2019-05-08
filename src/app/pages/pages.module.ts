@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import {RouterModule, Routes} from '@angular/router';
+import { MapComponent } from './map/map.component';
+import {AgmCoreModule} from '@agm/core';
 const routes: Routes = [
   {
     path: '',
@@ -15,10 +17,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [PagesComponent],
+  declarations: [PagesComponent, MapComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
+
   ]
 })
 export class PagesModule { }
