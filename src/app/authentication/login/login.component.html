@@ -1,21 +1,23 @@
 <div class="row">
   <div class="col-12 col-sm-12" >
     <div class="mgh_title">ورود کاربر</div>
-    <form>
+    <form [formGroup]="login" (ngSubmit)="onLogin()">
       <div class="hp_input_contents">
         <div class="hp_input_content" >
-          <input type="text" placeholder="ایمیل " id="email">
+          <input type="text" placeholder="ایمیل " id="email" formControlName="email" class="{{(login.get('email').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
           <img src="./assets/icons/icons8-important-mail-64 (1).png" >
         </div>
         <div class="hp_input_content" >
-          <input type="password" placeholder="رمز عبور" id="password">
+          <input type="password" placeholder="رمز عبور" id="password" formControlName="password" class="{{(login.get('password').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
           <img src="./assets/icons/icons8-password-96.png" >
         </div>
         <div class="mgh_forgot_pass">
           <a routerLink="/auth/forgetPass">فراموشی رمز عبور</a>
         </div>
       </div>
-
+      <ng-container *ngFor="let err of errors">
+        <div class="hp_errors alert-danger" *ngIf="err">{{err}}</div>
+      </ng-container>
       <button class="hp_button" type="submit" >ورود</button>
     </form>
 

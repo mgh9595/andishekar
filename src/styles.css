@@ -17,7 +17,7 @@ time, mark, audio, video{
   font-family: IRANSans !important;
 }
 body,html{
-  height: 110%;
+  height: 100%;
 }
 .hp_rastchin{
   direction: rtl;
@@ -116,6 +116,96 @@ color: #dcba00 !important;
   text-align: right;
   margin: 20px 0;
 }
+.hp_errors.alert-danger {
+  text-align: right;
+  padding: 10px;
+  margin-bottom: -11px;
+}
 a{
   text-decoration: none!important;
 }
+
+
+/*----------------------HOME--------------------------*/
+.hp_home {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.slide_content{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: red;
+  right: 0;
+  top: 0;
+  z-index: 12;
+  transform: translate(calc(100% + 15px));
+  transition: all 0.5s ease;
+}
+.slide_content.active{
+  transform: translate(30%);
+}
+.map_content{
+  height:85%;
+  transition: all 0.4s ease;
+}
+.google_mgh_map{
+  height: 100%
+}
+.hp_inmap{
+  height: 100%;
+  position: relative;
+}
+.map_content.blur{
+  filter: blur(1.5px);
+}
+.menu_content{
+  height: 15%;
+}
+.hp_inmapp_searchtab{
+  position: absolute;
+  top:0;
+  z-index: 10;
+  width: 100%;
+  margin: 5px 0px;
+  padding: 0 4px;
+}
+
+
+.hp_menu_icon_menu img,.hp_menu_icon_cancel img,.hp_menu_icon_search img{
+  width: 25px;
+  position: absolute;
+}
+.hp_menu_icon_menu img {
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+}
+.hp_menu_icon_search img {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+}
+
+.hp_menu_input input{
+  width: 100%;
+  height: 35px;
+  border-radius: 22px;
+  -webkit-border-radius: 22px;
+  border: none;
+  outline: none;
+  padding: 0px 35px;
+  font-size: 14px;
+  color: black;
+}
+.hp_menu_input input::placeholder{
+  color: #999999;
+}
+
+@media only (max-width:576px) {
+  .hp_rastchin{
+
+  }
+}
+

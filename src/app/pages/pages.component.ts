@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TogglemenuService} from '../services/togglemenu.service';
 
 @Component({
   selector: 'app-pages',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private toggle:TogglemenuService) { }
+active:boolean=false;
   ngOnInit() {
+    this.toggle.active.subscribe(res=>{
+      this.active=res;
+
+    })
+  }
+  toggleMenu=()=>{
+    console.log('emdedoded');
+    this.toggle.active.next(false);
   }
 
 }

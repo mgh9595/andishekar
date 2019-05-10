@@ -4,6 +4,8 @@ import { PagesComponent } from './pages.component';
 import {RouterModule, Routes} from '@angular/router';
 import { MapComponent } from './map/map.component';
 import {AgmCoreModule} from '@agm/core';
+import { SlidemenuComponent } from './slidemenu/slidemenu.component';
+import { BottommenuComponent } from './bottommenu/bottommenu.component';
 const routes: Routes = [
   {
     path: '',
@@ -17,10 +19,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [PagesComponent, MapComponent],
+  declarations: [PagesComponent, MapComponent, SlidemenuComponent, BottommenuComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes),AgmCoreModule.forRoot({apiKey:'AIzaSyAQCD8vjNyFMY4pwH1bE2fYdM0t1v4rdNw'})
 
 
   ]

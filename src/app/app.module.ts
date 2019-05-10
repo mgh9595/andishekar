@@ -5,14 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AgmCoreModule} from '@agm/core';
 
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AgmCoreModule.forRoot({apiKey:'AIzaSyAQCD8vjNyFMY4pwH1bE2fYdM0t1v4rdNw'})
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
