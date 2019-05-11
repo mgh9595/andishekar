@@ -6,6 +6,7 @@ import { MapComponent } from './map/map.component';
 import {AgmCoreModule} from '@agm/core';
 import { SlidemenuComponent } from './slidemenu/slidemenu.component';
 import { BottommenuComponent } from './bottommenu/bottommenu.component';
+import {ClickOutsideModule} from 'ng-click-outside';
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +23,8 @@ const routes: Routes = [
   declarations: [PagesComponent, MapComponent, SlidemenuComponent, BottommenuComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),AgmCoreModule.forRoot({apiKey:'AIzaSyAQCD8vjNyFMY4pwH1bE2fYdM0t1v4rdNw'})
+    RouterModule.forChild(routes),AgmCoreModule.forRoot({apiKey:'AIzaSyAQCD8vjNyFMY4pwH1bE2fYdM0t1v4rdNw'}),
+    ClickOutsideModule
 
 
   ]

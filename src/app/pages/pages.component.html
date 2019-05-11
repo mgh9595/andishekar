@@ -1,6 +1,6 @@
 <div class="hp_home">
 
-  <div class="slide_content {{active?'active':null}}">
+  <div class="slide_content {{active?'active':null}}" (clickOutside)="isWork?onClickedOutside():null" >
     <slidemenu></slidemenu>
   </div>
 
