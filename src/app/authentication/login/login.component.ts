@@ -27,14 +27,14 @@ export class LoginComponent implements OnInit {
     if (this.login.valid) {
 
     } if (this.login.get('email').hasError('required')) {
-      this.errors.push('لطفا ایمیل را وارد کنید!');
+      this.errors.push('- لطفا ایمیل را وارد کنید!');
       console.log(this.errors);
     }  if (this.login.get('email').hasError('email')) {
-      this.errors.push('فرمت ایمیل وارد شده صحیح نیست!');
+      this.errors.push('- فرمت ایمیل وارد شده صحیح نیست!');
       console.log(this.errors);
     }
       if (this.login.get('password').hasError('required')) {
-        this.errors.push('لطفا رمز عبور خود را وارد کنید!');
+        this.errors.push('- لطفا رمز عبور خود را وارد کنید!');
         console.log(this.errors);
     }
   }

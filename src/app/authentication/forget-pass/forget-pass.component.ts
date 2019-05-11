@@ -26,11 +26,11 @@ errors=[];
 
         }
         else if(this.forgetPass.get('email').hasError('required')){
-          this.errors.push('لطفا ایمیل را وارد کنید!');
+          this.errors.push('- لطفا ایمیل را وارد کنید!');
           console.log(this.errors);
         }
         else if(this.forgetPass.get('email').hasError('email')){
-          this.errors.push('فرمت ایمیل وارد شده صحیح نیست!');
+          this.errors.push('- فرمت ایمیل وارد شده صحیح نیست!');
           console.log(this.errors);
 
         }

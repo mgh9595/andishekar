@@ -1,28 +1,31 @@
 <div class="row">
   <div class="col-12 col-sm-12" >
     <div class="mgh_title">ایجاد حساب</div>
-    <form>
+    <form [formGroup]="newaccount" (ngSubmit)="onNewaccount()">
       <div class="hp_input_contents">
         <div class="hp_input_content" >
-          <input type="text" placeholder="ایمیل " id="email">
+          <input type="text" placeholder="ایمیل " id="email" formControlName="email" class="{{(newaccount.get('email').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
           <img src="./assets/icons/icons8-important-mail-64 (1).png">
         </div>
         <div class="hp_input_content" >
-          <input type="password" placeholder="رمز عبور" id="password">
+          <input type="password" placeholder="رمز عبور" id="password" formControlName="password" class="{{(newaccount.get('password').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
           <img src="./assets/icons/icons8-password-96.png" >
         </div>
         <div class="hp_input_content" >
-          <input type="text" placeholder="نام " id="name">
+          <input type="text" placeholder="نام " id="name" formControlName="name" class="{{(newaccount.get('name').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
           <img src="./assets/icons/icons8-name-filled-100.png" style="width:18px;" >
         </div>   <div class="hp_input_content" >
-        <input type="text" placeholder="نام خانوادگی " id="family">
+        <input type="text" placeholder="نام خانوادگی " id="family" formControlName="family" class="{{(newaccount.get('family').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
         <img src="./assets/icons/icons8-name-filled-100.png" style="width:18px;" >
       </div>
         <div class="hp_input_content" >
-        <input type="text" placeholder="تلفن همراه " id="mobilenumber">
+        <input type="text" placeholder="تلفن همراه " id="mobilenumber" formControlName="mobilenumber" class="{{(newaccount.get('mobilenumber').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}">
         <img src="./assets/icons/icons8-iphone-96.png" >
       </div>
       </div>
+      <ng-container *ngFor="let err of errors">
+        <div class="hp_errors alert-danger" *ngIf="err">{{err}}</div>
+      </ng-container>
    <button class="hp_button" type="submit" >ثبت حساب</button>
     </form>
 
