@@ -211,9 +211,10 @@ a{
 
 .hp_slider {
   height: 100%;
-  padding: 100px 0 0 0;
+  padding: 20px 0 0 0;
   width: 100%;
   display: block;
+  overflow: scroll;
 }
 .slide_contents {
   HEIGHT: 100%;
@@ -221,6 +222,7 @@ a{
   display: block;
   direction: rtl;
   text-align: right;
+  overflow: scroll;
 }
 .slide_contents li{
   list-style: none;
@@ -235,4 +237,41 @@ a{
   border-right: 1px solid gold;
   cursor: pointer;
   width: 100%;
+}
+.bot_slied{
+  padding: 0 0;
+  background: rgb(99, 102, 82);
+  max-height: 0;
+  overflow: hidden;
+  display: none;
+  transition: all 1s ease;
+}.bot_slied.active{
+   max-height: 2000px;
+   overflow: hidden;
+   display: block;
+   padding: 30px 0;
+}
+.bot_slied .hp_input_content>input{
+  background: rgb(99, 102, 82);
+  color: white;
+}
+.bot_slied .hp_input_content>input::placeholder{
+  color: white;
+}
+.butt_bot .hp_button{
+  width: 50%;
+  background: #f7d104;
+  border: none;
+  border-radius: 3px;
+  color: rgba(33, 33, 33, 0.69);
+  margin-top: 40px;
+  padding: 5px;
+  height: 40px;
+}
+
+.butt_bot{
+  text-align: center;
+}
+ul{
+  padding: 0;
 }

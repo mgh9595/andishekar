@@ -3,7 +3,19 @@
   <div class="slide_contents">
      <ul>
        <a><li>درخواست های پیشین</li></a>
-       <a><li>تغییر رمز عبور</li></a>
+       <a (click)="toggleSlide()"><li>تغییر رمز عبور</li></a>
+       <div class="bot_slied {{isActive?'active':null}}">
+         <form [formGroup]="repass" (ngSubmit)="changePass()">
+         <div class="hp_input_content"><input type="password" placeholder="رمز عبور قبلی" formControlName="lastPass" class="{{(repass.get('lastPass').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}"></div>
+         <div class="hp_input_content"><input  type="password" placeholder="رمز عبور جدید" formControlName="newPass" class="{{(repass.get('newPass').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}"></div>
+         <div class="hp_input_content"><input type="password" placeholder="تکرار رمز عبور جدید" formControlName="renewPass" class="{{(repass.get('renewPass').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}"></div>
+         <ng-container *ngFor="let err of errors">
+           <div class="hp_errors alert-danger" *ngIf="err">{{err}}</div>
+         </ng-container>
+         <div class="butt_bot"><button class="hp_button" type="submit" >تغییر رمز</button></div>
+         </form>
+       </div>
+
        <a><li>خروج</li></a>
      </ul>
 
