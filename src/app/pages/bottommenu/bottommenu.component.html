@@ -10,7 +10,7 @@
       <span (click)="toggle_slide_bottom('source')" > مبداء</span>
       <span (click)="toggle_slide_bottom('destination')"  style="border-right: 2px solid #b19604;
     border-left: 2px solid #b19604;">مقصد</span>
-      <span (click)="toggle_slide_bottom('time')">زمان</span>
+      <span (click)="toggle_slide_bottom('time');datetimeDateInit()">زمان</span>
     </div>
 
   </div>
@@ -21,23 +21,43 @@
         {{slideText}}
       </p>
     </div>
-    <div class="source_content" *ngSwitchCase="'source'">
-      <span><img src="./assets/icons/icons8-home-address-filled-96.png"></span>
-      <span>
-        آدرس مبدا  است اینجا هوی !!
+    <div class="type_content" *ngSwitchCase="'source'">
+      <div class="source_content">
+        <span><img src="./assets/icons/icons8-home-address-filled-96.png"></span>
+        <span>
+        {{source==""?noneDestination.sourceError:source}}
       </span>
-    </div>
-    <div class="source_content" *ngSwitchCase="'destination'">
-      <div class="destinations_content">
-        <div *ngFor="let destination of destinations;let index=index">
-          <div class="destinations_name"><span class="destination_index">{{index+1}}</span> <span class="destination_index">{{destination}}</span></div> <span class="destinations_icon" (click)="remove_destinations(index)"><img src="./assets/icons/icons8-cancel-filled.svg"></span>
       </div>
+    </div>
+    <div class="type_content" *ngSwitchCase="'destination'">
+      <div class="destinations_content {{destinations.length==0?'error':null}}">
+        <div *ngFor="let destination of destinations;let index=index">
+          <div class="destinations_name">
+            <span class="destination_index">{{index+1}}</span>
+            <span class="destination_text">{{destination}}</span>
+          </div>
+          <span class="destinations_icon" (click)="remove_destinations(index)"><img src="./assets/icons/icons8-cancel-filled.svg"></span>
+      </div>
+        <span *ngIf="destinations.length==0">
+          <img  style="margin-left: 5px;" src="./assets/icons/icons8-place-marker-filled-96.png"></span>
+        <span class="destination_text" *ngIf="destinations.length==0">{{noneDestination.desError}}</span>
+    </div>
+  </div>
+    <div class="type_content" *ngSwitchCase="'time'">
+      <div class="time_content {{destinations.length==0?'error':null}}">
+        <div class="demo-wrapper demo-wrapper-datetimeDate">
+          <div class="time_menu_toggle">
+            <span class="time_menu_text">زمان حرکت</span>
+            <ui-switch color="#b19604" switchColor="#fcfcfc" defaultBgColor="#b19604"  size="medium" (change)="datetimeDateInit($event)">
+            </ui-switch>
+            <span class="time_menu_text">تاریخ حرکت</span></div>
+          <div class="date_content {{Date_type?'noDisplay':null}}"><input id="datetimeDate-demo" placeholder="Please Select..." /></div>
+          <div class="time_content {{!Date_type?'noDisplay':null}}"><input id="datetimeTime-demo" placeholder="Please Select..." /></div>
+        </div>
 
     </div>
-
-    <div *ngSwitchDefault></div>
   </div>
-
+    <div *ngSwitchDefault></div>
 
 
 </div>

@@ -8,6 +8,7 @@ import { SlidemenuComponent } from './slidemenu/slidemenu.component';
 import { BottommenuComponent } from './bottommenu/bottommenu.component';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {ReactiveFormsModule} from '@angular/forms';
+import {UiSwitchModule} from 'ngx-toggle-switch';
 const routes: Routes = [
   {
     path: '',
@@ -25,6 +26,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    UiSwitchModule,
     RouterModule.forChild(routes),AgmCoreModule.forRoot({apiKey:'AIzaSyAQCD8vjNyFMY4pwH1bE2fYdM0t1v4rdNw'}),
     ClickOutsideModule
 

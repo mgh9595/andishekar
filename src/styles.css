@@ -358,24 +358,39 @@ ul{
   z-index: 4;
 }
 
-.source_content {
+.type_content {
   margin: 40px 0 0 0;
   text-align: right;
   padding: 0 13px;
   width: 100%;
   height: 100%;
 }
-.source_content img {
+.type_content img {
   width: 45px;
 }
-.destinations_content {
+.destinations_content,.time_content{
   overflow: scroll;
   height: 45%;
   width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: flex-start;
+  display: block;
+}
+
+.source_content{
+  overflow: scroll;
+  height: 45%;
+  width: 100%;
+  display: block;
+  /*display: flex;*/
+  /*display: -webkit-flex;*/
+  /*flex-flow: row wrap;*/
+  /*-webkit-flex-flow:row wrap ;*/
+  /*justify-content: flex-start;*/
+  /*align-content: flex-start;*/
+  /*align-items: center;*/
+  /*-webkit-align-content: flex-start;*/
+}
+.source_content:after,.source_content:before{
+  display: none;
 }
 span.destinations_icon img {
   width: 23px;
@@ -388,7 +403,67 @@ span.destinations_icon img {
   align-items: center;
   border-bottom: 1px solid #b1960459;
   width: 92%;
+  margin: auto;
 }
 .destinations_name span{
   margin:0 3px;
+}
+span.destination_index {
+  width: 25px;
+  height: 25px;
+  background: #b19604;
+  display: inline-flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  /* border-color: brown; */
+  border: 1px solid rgba(0, 0, 0, 0.075);
+  color: white;
+  font-size: 15px;
+}
+.destinations_content.error>div {
+  margin: unset!important;
+}
+/*.source_content span {*/
+/*  color: #a5a7a6;*/
+/*}*/
+.google_mgh_map{
+  position: relative;
+}
+.map_pin{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  transform: translate(-50%,-50%);
+}
+.time_menu_toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+input#datetimeDate-demo,input#datetimeTime-demo{
+  display: none;
+}
+span.time_menu_text {
+  margin: 0 10px;
+}
+.date_content.noDisplay,.time_content.noDisplay{
+display: none;
+}
+.mgh_slide_menu .mbsc-sc-whl-gr {
+  direction: ltr;
+}
+
+.mbsc-ios .mbsc-dt-whl-d .mbsc-sc-itm, .mbsc-ios .mbsc-dt-whl-h .mbsc-sc-itm, .mbsc-ios .mbsc-dt-whl-i .mbsc-sc-itm, .mbsc-ios .mbsc-dt-whl-s .mbsc-sc-itm {
+  text-align: center!important;
+}
+.mgh_slide_menu span.mbsc-dt-month {
+  text-align: center;
+  display: block;
+}
+.mbsc-ios .mbsc-sc-whl-l {
+  border-top: 1px solid #cbc6acba!important;
+  border-bottom: 1px solid #cbc6ac!important;
 }
