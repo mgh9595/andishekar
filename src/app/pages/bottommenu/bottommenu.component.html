@@ -1,10 +1,11 @@
 <div class="bottom_slide">
   <div class="onSlide_content">
-    <div class="arcRectangle_content">
-      <img src="./assets/dokmeAsset 1hdpi.svg">
-      <p >
-        ثبت مسیر
+    <div class="arcRectangle_content" >
+       <img src="./assets/dokmeAsset 1hdpi.svg" (click)="!EDIT_TYPE?registerRequest():UpdateRequest()" #IMAG>
+      <p (click)="IMAG.click()">
+        {{!EDIT_TYPE?'ثبت مسیر':'بروز رسانی مسیر'}}
       </p>
+
     </div>
     <div class="rectangle_content">
       <span (click)="toggle_slide_bottom('source')" > مبداء</span>
@@ -12,7 +13,7 @@
     border-left: 2px solid #b19604;">مقصد</span>
       <span (click)="toggle_slide_bottom('time');datetimeDateInit()">زمان</span>
     </div>
-
+<span class="cancle_update" *ngIf="EDIT_TYPE" (click)="cancel_update()">لغو</span>
   </div>
   <div class="bottomSlide_content {{active_bottom_slide?'active':null}}"  [ngSwitch]="Type">
     <div class="arcRectangle_content">
@@ -23,15 +24,17 @@
     </div>
     <div class="type_content" *ngSwitchCase="'source'">
       <div class="source_content">
-        <span><img src="./assets/icons/icons8-home-address-filled-96.png"></span>
         <span>
-        {{source==""?noneDestination.sourceError:source}}
+          <img src="./assets/icons/icons8-home-address-filled-96.png"></span>
+        <span>
+        {{source!==''&&source!==null?source:noneDestination.sourceError}}
       </span>
       </div>
     </div>
     <div class="type_content" *ngSwitchCase="'destination'">
       <div class="destinations_content {{destinations.length==0?'error':null}}">
-        <div *ngFor="let destination of destinations;let index=index">
+        <div *ngFor="let destination of destinations;
+        let index=index">
           <div class="destinations_name">
             <span class="destination_index">{{index+1}}</span>
             <span class="destination_text">{{destination}}</span>
@@ -43,22 +46,27 @@
         <span class="destination_text" *ngIf="destinations.length==0">{{noneDestination.desError}}</span>
     </div>
   </div>
-    <div class="type_content" *ngSwitchCase="'time'">
-      <div class="time_content {{destinations.length==0?'error':null}}">
+    <div class="type_content {{Type!=='time'?'noDisplay':null}}">
+      <div class="time_content">
         <div class="demo-wrapper demo-wrapper-datetimeDate">
           <div class="time_menu_toggle">
             <span class="time_menu_text">زمان حرکت</span>
-            <ui-switch color="#b19604" switchColor="#fcfcfc" defaultBgColor="#b19604"  size="medium" (change)="datetimeDateInit($event)">
+            <ui-switch color="#b19604" switchColor="#fcfcfc" defaultBgColor="#b19604"  size="small" (change)="datetimeDateInit($event)">
             </ui-switch>
             <span class="time_menu_text">تاریخ حرکت</span></div>
-          <div class="date_content {{Date_type?'noDisplay':null}}"><input id="datetimeDate-demo" placeholder="Please Select..." /></div>
-          <div class="time_content {{!Date_type?'noDisplay':null}}"><input id="datetimeTime-demo" placeholder="Please Select..." /></div>
+          <div class="date_content {{Date_type?'noDisplay':null}}"><input  id="datetimeDate-demo" placeholder="Please Select..." /></div>
+          <div class="time_content {{!Date_type?'noDisplay':null}}"><input  id="datetimeTime-demo" placeholder="Please Select..." /></div>
+          <div class="toggle_tarh">
+            <mat-button-toggle-group [appearance]="'legacy'" name="tarh" (change)="print_Value($event)">
+              <mat-button-toggle value="0" checked>طرح طرافیک</mat-button-toggle>
+              <mat-button-toggle value="1">طرح زوج و فرد</mat-button-toggle>
+              <mat-button-toggle value="2">خارج طرح</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
         </div>
 
     </div>
   </div>
-    <div *ngSwitchDefault></div>
-
 
 </div>
 </div>

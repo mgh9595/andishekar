@@ -6,8 +6,9 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class TogglemenuService {
 active:BehaviorSubject<boolean>;
+isWork:BehaviorSubject<boolean>;
   constructor() {
     this.active=new BehaviorSubject(false);
-
+    this.isWork=new BehaviorSubject(false);
   }
 }

@@ -1,0 +1,10 @@
+<h2 mat-dialog-title class="mgh_dialog_title">
+  ثبت آدرس
+</h2>
+<mat-dialog-content class="mat-typography mgh_content_dialog add_place">
+  <h3>نام آدرس خود را وارد کنید</h3>
+  <input class="add_place" [(ngModel)]="title">
+</mat-dialog-content>
+<mat-dialog-actions class="mgh_dialog_btn add_place" align="end">
+  <button mat-button [mat-dialog-close]="title" cdkFocusInitial>ثبت</button>
+</mat-dialog-actions>

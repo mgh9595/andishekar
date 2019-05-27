@@ -9,7 +9,7 @@
         </div>
       </div>
       <ng-container *ngFor="let err of errors">
-        <div class="hp_errors alert-danger" *ngIf="err">{{err}}</div>
+        <div class="hp_errors {{(forgetPass.get('email').invalid&&isSubmited)||result_code!==1?'alert-danger':'alert-success'}}" *ngIf="err">{{err}}</div>
       </ng-container>
       <button class="hp_button" type="submit" >ارسال ایمیل</button>
     </form>

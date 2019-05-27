@@ -6,11 +6,16 @@ import { LoginComponent } from './login/login.component';
 import { NewaccountComponent } from './newaccount/newaccount.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ForgetPassComponent } from './forget-pass/forget-pass.component';
+import {HttpClientModule} from '@angular/common/http';
 const routes: Routes = [
   {
     path: '',
     component: AuthenticationComponent,
     children:[
+      {
+        path:'',
+        redirectTo:'login'
+      },
       {
         path:'login',
         component:LoginComponent
@@ -38,6 +43,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ]
 })

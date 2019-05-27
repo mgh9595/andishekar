@@ -1,23 +1,53 @@
 <div class="hp_slider">
-
   <div class="slide_contents">
      <ul>
-       <a><li>درخواست های پیشین</li></a>
-       <a (click)="toggleSlide()"><li>تغییر رمز عبور</li></a>
+       <a (click)="toggleSlide('requests')">
+         <li>درخواست های پیشین</li></a>
+       <div class="bot_slied myrequest {{isActive_request?'active':null}}">
+         <ng-container *ngIf="Requests">
+           <div class="myrequest_content" *ngFor="let req of Requests.Requestes;let index=index">
+             <div class="myrequest_address">
+             <span class="myrequest_text">آدرس :
+             </span>
+               <span class="myrequest_value"  (click)="Updaterequest(index)">{{req.FromText}}
+             </span>
+               <span class="myrequest_icon" (click)="openDialog(req.RequestId)">
+              <img src="./assets/icons/icons8-cancel-filled.svg">
+            </span>
+             </div>
+             <div class="myrequest_status_details">
+             <span class="myrequest_date">تاریخ :
+               {{req.Date}}
+             </span>
+               <span class="myrequest_status">وضعیت :
+               {{req.Status}}
+               <span class="status_info" *ngIf="req.Status=='مشاهده جزییات'">
+                 <img src="./assets/icons/icons8-info (4).svg" (click)="openDialogDriver(req.RequestId)">
+               </span>
+             </span>
+
+             </div>
+           </div>
+         </ng-container>
+
+
+       </div>
+       <a id="change_pass" (click)="toggleSlide('pass')"><li>تغییر رمز عبور</li></a>
        <div class="bot_slied {{isActive?'active':null}}">
          <form [formGroup]="repass" (ngSubmit)="changePass()">
          <div class="hp_input_content"><input type="password" placeholder="رمز عبور قبلی" formControlName="lastPass" class="{{(repass.get('lastPass').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}"></div>
          <div class="hp_input_content"><input  type="password" placeholder="رمز عبور جدید" formControlName="newPass" class="{{(repass.get('newPass').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}"></div>
          <div class="hp_input_content"><input type="password" placeholder="تکرار رمز عبور جدید" formControlName="renewPass" class="{{(repass.get('renewPass').invalid&&isSubmited)?'mgh-submit':(isSubmited?'mgh-invalid_submit':null)}}"></div>
          <ng-container *ngFor="let err of errors">
-           <div class="hp_errors alert-danger" *ngIf="err">{{err}}</div>
+           <div class="hp_errors {{(repass.invalid||(repass.get('newPass').value!==repass.get('renewPass').value)&&isSubmited||(result_code!==1))?'alert-danger':'alert-success'}}" *ngIf="err">{{err}}</div>
          </ng-container>
          <div class="butt_bot"><button class="hp_button" type="submit" >تغییر رمز</button></div>
          </form>
        </div>
 
-       <a><li>خروج</li></a>
+       <a id="exit_slide" (click)="Exit()"><li>خروج</li></a>
      </ul>
+
 
   </div>
 

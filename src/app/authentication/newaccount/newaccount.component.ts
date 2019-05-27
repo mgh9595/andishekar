@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-newaccount',
@@ -12,13 +13,13 @@ export class NewaccountComponent implements OnInit {
   isSubmited: boolean = false;
   errors = [];
 
-  constructor(private form: FormBuilder) {
+  constructor(private form: FormBuilder,private auth:AuthService) {
     this.newaccount = this.form.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
-      name: [null, [Validators.required]],
-      family: [null, [Validators.required]],
-      mobilenumber: [null, [Validators.required]]
+      name: [null],
+      family: [null],
+      mobilenumber: [null]
     })
   }
 
@@ -28,8 +29,32 @@ export class NewaccountComponent implements OnInit {
     this.errors = [];
     this.isSubmited = true;
     if (this.newaccount.valid) {
+      const data ={
+        Email:this.newaccount.get('email').value,
+        Password:this.newaccount.get('password').value,
+        Device:'Web',
+        FirstName:this.newaccount.get('name').value?this.newaccount.get('name').value:null,
+        LastName:this.newaccount.get('family').value?this.newaccount.get('family').value:null,
+        Mobile:this.newaccount.get('mobilenumber').value?this.newaccount.get('mobilenumber').value:null
+      };
+      this.auth.Register(data
 
-    } if (this.newaccount.get('email').hasError('required')) {
+      ).subscribe(
+        res=>{
+          if(res.ResultCode==1){
+            localStorage.setItem('Token',res.ServerToken);
+            location.reload();
+          }
+          else if(res.ResultCode!==1){
+            this.errors.push(res.ResultText)
+          }
+          else{
+            this.errors.push('متاسفانه ارتباط با سرور قطع می باشد');
+          }
+        }
+      )
+    }
+    if (this.newaccount.get('email').hasError('required')) {
       this.errors.push('- لطفا ایمیل را وارد کنید!');
       console.log(this.errors);
     }  if (this.newaccount.get('email').hasError('email')) {

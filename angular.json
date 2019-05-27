@@ -24,7 +24,6 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/@mobiscroll/angular-lite/dist/css/mobiscroll.min.css",
               "src/assets/scroller/css/mobiscroll.custom-3.0.0-beta4.min.css"
             ],
             "scripts": [

@@ -1,5 +1,5 @@
-<div class="hp_home">
-
+<div class="hp_home" >
+<span class="{{!ype_final_req?null:'noDisplay'}}">
   <div class="slide_content {{active?'active':null}}" (clickOutside)="isWork?onClickedOutside():null" >
     <slidemenu></slidemenu>
   </div>
@@ -10,6 +10,112 @@
 
   <div class="menu_content">
     <bottommenu></bottommenu>
+  </div>
+</span>
+  <div class="final_submit" *ngIf="ype_final_req">
+    <div class="submit_title">
+      <div class="submit_title_text">بررسی نهایی</div>
+      <div class="submit_title_icon" (click)="RETURN()">
+        <img src="./assets/icons/icons8-left-100.png"></div>
+    </div>
+    <div class="req_content_des">
+      <div class="req_source">
+        <div class="right_blox">
+        <span class="icon_req">
+          <img src="./assets/icons/icons8-home.svg">
+        </span>
+        </div>
+        <div class="left_box">
+        <span class="req_title">
+           <span>مبدا</span>
+          <span class="add_place" (click)="openDialog(0,'sourc')">
+            <img src="./assets/icons/icons8-plus.svg">
+          </span>
+         </span>
+          <span class="req_value">
+        {{data.FromText}}
+      </span>
+        </div>
+
+      </div>
+      <div class="destinatins_source">
+        <div class="req_des" *ngFor="let res of data.Destinations;let index=index">
+          <div class="right_blox">
+        <span class="icon_req">
+          <img src="./assets/icons/icons8-dollar-place-marker-100.png">
+        </span>
+            <span class="req_num">
+          {{index+1}}
+        </span>
+
+          </div>
+          <div class="left_box">
+       <span class="req_title">
+           <span>مقصد</span>
+          <span class="add_place" (click)="openDialog(index,'sourc')">
+            <img src="./assets/icons/icons8-plus.svg">
+          </span>
+         </span>
+            <span class="req_value">
+        {{res['Text']}}
+      </span>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="req_content_date_time">
+        <div class="content_time">
+          <div class="right_blox">
+        <span class="icon_req">
+          <img src="./assets/icons/icons8-stopwatch-96.png">
+        </span>
+          </div>
+          <div class="left_box">
+          <span class="req_title">
+            زمان
+          </span>
+            <span class="req_value">
+           {{data.FromTime}}
+           </span>
+          </div>
+
+        </div>
+        <div class="content_date">
+          <div class="right_blox">
+        <span class="icon_req">
+          <img src="./assets/icons/icons8-today-filled-96.png">
+        </span>
+          </div>
+          <div class="left_box">
+          <span class="req_title">
+            تاریخ
+          </span>
+            <span class="req_value">
+      {{data.Date}}
+      </span>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="req_description">
+      <span class="desc_title">
+        توضیحات سفر
+      </span>
+        <div class="input_desc">
+          <textarea maxlength="80" [(ngModel)]="descrption"></textarea>
+        </div>
+      </div>
+      <div class="req_response">
+        <ng-container *ngIf="errors.length>0">
+          <div class="hp_errors {{err.type==1?'alert-success':'alert-danger'}}" *ngFor="let err of errors" >{{err.text}}</div>
+        </ng-container>
+      </div>
+      <div class="req_button">
+        <button class="button hp_button" style="width: 30%;height: 40px" type="button" (click)="!EDIT_TYPE?registerRequest():updateRequest()">ثبت درخواست</button>
+      </div>
+    </div>
   </div>
 
 </div>
