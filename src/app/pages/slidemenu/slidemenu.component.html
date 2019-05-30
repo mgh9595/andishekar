@@ -8,8 +8,10 @@
            <div class="myrequest_content" *ngFor="let req of Requests.Requestes;let index=index">
              <div class="myrequest_address">
              <span class="myrequest_text">آدرس :
-             </span>
                <span class="myrequest_value"  (click)="Updaterequest(index)">{{req.FromText}}
+                 <span class="edit_location">
+                 <img src="./assets/icons/icons8-map-editing-100.png"></span>
+             </span>
              </span>
                <span class="myrequest_icon" (click)="openDialog(req.RequestId)">
               <img src="./assets/icons/icons8-cancel-filled.svg">
@@ -17,9 +19,9 @@
              </div>
              <div class="myrequest_status_details">
              <span class="myrequest_date">تاریخ :
-               {{req.Date}}
+               <span class="myrequest_date_value">{{req.Date}}</span>
              </span>
-               <span class="myrequest_status">وضعیت :
+               <span class="myrequest_status {{req.Status=='مشاهده جزییات'?null:'left_mgh_dis'}}">وضعیت :
                {{req.Status}}
                <span class="status_info" *ngIf="req.Status=='مشاهده جزییات'">
                  <img src="./assets/icons/icons8-info (4).svg" (click)="openDialogDriver(req.RequestId)">

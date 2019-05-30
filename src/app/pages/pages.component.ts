@@ -35,7 +35,9 @@ export class PagesComponent implements OnInit {
 
   ngOnInit() {
     this.toggle.active.subscribe(res=>{
+      console.log(this.active)
       this.active=res;
+      console.log(this.active)
       res?setTimeout(()=>{this.isWork=true},500):null;
 
     });
@@ -141,6 +143,7 @@ export class PagesComponent implements OnInit {
           res => {
             if (res.ResultCode == 1) {
                this.Show_message(res.ResultText)
+              this.toggle.Excute_get_Adresses.next(true);
             }
             else if (res.ResultCode !== 1) {
               this.Show_message(res.ResultText)
@@ -162,7 +165,11 @@ Show_message=(meessage)=>{
   });
 };
 
-
+closeslider(){
+  this.toggle.active.next(false);
+  this.isWork=false;
+  console.log(this.active)
+}
 }
 @Component({
   selector: 'get_name_place',

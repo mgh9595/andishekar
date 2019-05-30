@@ -229,6 +229,10 @@ Valid_request=()=>{
 };
 cancel_update=()=>{
   this.toggle.EDIT_TYPE.next(false);
+};
+close_bot_menu(){
+  this.active_bottom_slide=false;
+  this.Type=null;
 }
 
 }

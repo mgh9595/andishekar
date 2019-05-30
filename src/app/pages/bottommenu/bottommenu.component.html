@@ -17,8 +17,8 @@
   </div>
   <div class="bottomSlide_content {{active_bottom_slide?'active':null}}"  [ngSwitch]="Type">
     <div class="arcRectangle_content">
-      <img src="./assets/dokmeAsset 1hdpi.svg">
-      <p >
+      <img src="./assets/dokmeAsset 1hdpi.svg" (click)="close_bot_menu()">
+      <p (click)="close_bot_menu()" >
         {{slideText}}
       </p>
     </div>

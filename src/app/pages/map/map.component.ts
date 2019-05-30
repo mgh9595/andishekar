@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   show_marker:boolean=false;
   showPlace:boolean=false;
   myPlaces:MyplaceModel[];
+  zoom=14;
 coordinate={Lat:35.71327702542838,Lng:51.41532897949219};
 coordinate_marker_end=[];
 coordinate_marker_sorce=[];
@@ -45,6 +46,9 @@ isSource:boolean=true;
 
   ngOnInit() {
     this.GetMyplaces();
+    this.toggle.Excute_get_Adresses.subscribe(res=>{
+      this.GetMyplaces();
+    })
   }
 onActive=()=>{
 this.toggle.active.next(true);
@@ -138,6 +142,7 @@ print=(event)=> {
   selectPlace=(index:number)=>{
     const place=this.myPlaces[index];
     this.map.panTo({lat:place.Latitude,lng:place.Longitude});
+    this.zoom=16;
     if(this.isSource){
       let source_loc=[];
       this.toggle_des.coordinate_marker_source_loc.next(source_loc.concat({Lat:place.Latitude,Lng:place.Longitude}));

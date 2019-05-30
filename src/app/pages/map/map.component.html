@@ -26,20 +26,22 @@
       </span>
     </span>
   </div>
-  <agm-map [streetViewControl]="false" [zoomControl]="false" [zoom]="13" class="google_mgh_map"  (mapReady)="mapReady($event)"  [latitude]="coordinate.Lat"
+  <agm-map [streetViewControl]="false" [zoomControl]="false" [zoom]="zoom" class="google_mgh_map"  (mapReady)="mapReady($event)"  [latitude]="coordinate.Lat"
            [longitude]="coordinate.Lng">
     <ng-container *ngIf="show_marker">
       <agm-marker *ngFor="let x of coordinate_marker_sorce"
+                  [markerDraggable]="true"
                   [latitude]="x.Lat"
                   [longitude]="x.Lng"
-      [iconUrl]="'https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-a.png&ax=44&ay=48&scale=1&text=%E2%80%A2'">
+      [iconUrl]="'https://mt.google.com/vt/icon?psize=20&font=fonts/Roboto-Regular.ttf&color=ff330000&name=icons/spotlight/spotlight-waypoint-blue.png&ax=44&ay=48&scale=1.1&text=%E2%80%A2'">
       </agm-marker>
 
     </ng-container>
     <ng-container *ngIf="show_marker">
       <agm-marker *ngFor="let x of coordinate_marker_end"
                   [latitude]="x.Lat"
-                  [longitude]="x.Lng">
+                  [longitude]="x.Lng"
+                  [markerDraggable]="true">
       </agm-marker>
 
     </ng-container>
@@ -49,7 +51,7 @@
     <img class="map_pin" src="./assets/icons/icons8-marker-96.png">
     <span class="marker_place">{{isSource?'انتخاب مبدا': 'انتخاب مقصد'}}</span>
   </span>
-  <span class="current_location_icon" (click)="GET_MY_LOC()">
-    <img src="./assets/icons/icons8-target-filled-100.png">
-  </span>
+<!--  <span class="current_location_icon" (click)="GET_MY_LOC()">-->
+<!--    <img src="./assets/icons/icons8-target-filled-100.png">-->
+<!--  </span>-->
 </div>
