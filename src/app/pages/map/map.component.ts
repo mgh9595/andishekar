@@ -108,9 +108,9 @@ print=(event)=> {
   showPlaces=()=>{
     this.showPlace=true;
     const x =document.getElementsByClassName('place_texts')[0] as HTMLElement;
-    setTimeout(()=>{x.style.display='flex'},0)
+    setTimeout(()=>{x.style.display='block'},0)
   };
-  protected mapReady(map) {
+  mapReady(map) {
     this.map = map;
     this.langg=this.map.getCenter();
   }
