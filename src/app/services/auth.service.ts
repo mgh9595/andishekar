@@ -20,6 +20,7 @@ export class AuthService {
   API_ENDPOINT_SELECT_MY_REQUEST = 'SelectMyRequest';
   API_ENDPOINT_DELETE_MY_REQUEST = 'DeleteRequest';
   API_ENDPOINT_SELECT_PROFILE_DRIVER = 'SelectProfileDriver';
+  API_ENDPOINT_DELETE_ADDRESS= 'DeleteAddress';
   constructor(private http:HttpClient) {
 
   }
@@ -126,6 +127,14 @@ export class AuthService {
       return of(error)})
     )
   }
+    public DeleteSavedAddress(
+    data){
+    return this.http.post(this.API_URL+ this.API_ENDPOINT_DELETE_ADDRESS,data).pipe(catchError(error => {
+      console.log(error);
+      return of(error)})
+    )
+  }
+
   public SelectMyRequest(
     data:{
       Token:string,
@@ -137,10 +146,7 @@ export class AuthService {
   }
 
  public DeleteMyRequest(
-    data:{
-      RequestId:number,
-      Token:string,
-  }){
+    data){
     return this.http.post(this.API_URL+ this.API_ENDPOINT_DELETE_MY_REQUEST,data).pipe(catchError(error => {
       console.log(error);
       return of(error)})

@@ -3,6 +3,7 @@ import {TogglemenuService} from '../../services/togglemenu.service';
 import {ToggledesService} from '../../services/toggledes.service';
 import {AuthService} from '../../services/auth.service';
 import {MyplaceModel} from '../../core/models/myplace.model';
+
 @Component({
   selector: 'map-hp',
   templateUrl: './map.component.html',
@@ -163,8 +164,23 @@ print=(event)=> {
       this.toggle_des.coordinate_marker_end_txt.next(old_text.concat(place.AddressGoogle))
       this.show_marker=true;
     }
-  }
+  };
 
+removePlace=(index)=>{
+  const data={
+    Token:localStorage.getItem('Token'),
+    AddressAn:this.myPlaces[index].AddressAN
+  };
+this.auth.DeleteSavedAddress(data).subscribe(res=>{
+  if (res.ResultCode == 1) {
+    this.myPlaces.splice(index,1);
+  }
+  else if (res.ResultCode !== 1) {
+  }
+  else {
+  }
+})
+};
 
 
 

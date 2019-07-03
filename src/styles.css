@@ -936,6 +936,7 @@ span.place_text {
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
   margin: 0 0 3px;
   padding: 5px 0 3px;
   border-top: 1px solid #80808026;
@@ -1026,4 +1027,8 @@ span.place_texts::-webkit-scrollbar-thumb {
   width: 5px;
   background: #f0c30f;
   border-radius: 10px;
+}
+span.place_text_text {
+  margin: auto;
+  transform: translateX(-12.5px);
 }

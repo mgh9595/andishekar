@@ -19,10 +19,12 @@
         <img src="./assets/icons/icons8-star-100.png">
       </span>
       <span class="place_texts">
-       <span class="place_text" *ngFor="let place of myPlaces;let index=index" (click)="selectPlace(index)">
-        {{place.AddressName}}
+       <span class="place_text" *ngFor="let place of myPlaces;let index=index" >
+         <span class="place_text_text" (click)="selectPlace(index)">{{place.AddressName}}</span>
+         <span class="cancel_place" (click)="removePlace(index)">
+        <img src="./assets/icons/icons8-cancel-filled.svg" style="width:20px">
       </span>
-
+      </span>
       </span>
     </span>
   </div>
