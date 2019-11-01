@@ -1,0 +1,18 @@
+<h2 mat-dialog-title class="mgh_dialog_title"></h2>
+<mat-dialog-content class="mat-typography mgh_content_dialog">
+  <div class="driver_details_content">
+    <div class="driver_image">
+      <img src="./assets/icons/icons8-driver-100.png">
+    </div>
+    <div class="driver_name"><span>{{data.FirstName}} {{data.LastName}}</span></div>
+    <div class="driver_license_plate">{{data.Number}}</div>
+    <div class="driver_details">
+      <span class="driver_mobile">
+         {{data.Mobile}}
+      </span>
+      <span class="time_request">
+        زمان درخواست : {{data.FromTime}}
+      </span>
+    </div>
+  </div>
+</mat-dialog-content>
