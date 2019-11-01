@@ -1032,3 +1032,17 @@ span.place_text_text {
   margin: auto;
   transform: translateX(-12.5px);
 }
+
+/*------commentCheack-------------*/
+.driver_details.driver_ratings{
+  flex-flow: row wrap;
+}
+.driver_comment{
+  width: 100%;
+}
+.driver_rating{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}

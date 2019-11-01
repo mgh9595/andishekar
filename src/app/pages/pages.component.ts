@@ -3,6 +3,8 @@ import {TogglemenuService} from '../services/togglemenu.service';
 import {AuthService} from '../services/auth.service';
 import {ToggledesService} from '../services/toggledes.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {Driver_detailsModel} from '../core/models/driver_details.model';
+import {driverdetails} from './slidemenu/slidemenu.component';
 
 @Component({
   selector: 'app-pages',
@@ -29,7 +31,7 @@ export class PagesComponent implements OnInit {
   };
   errors=[];
   constructor(private Des_service:ToggledesService,public dialog: MatDialog,private toggle:TogglemenuService,private auth :AuthService) {
-
+this.Check_Comment();
   }
 
 
@@ -165,6 +167,25 @@ Show_message=(meessage)=>{
   });
 };
 
+  Check_Comment=()=>{
+    let data={
+      Token:localStorage.getItem('Token')
+    };
+this.auth.Check_Comment(data).subscribe(res=>{
+  if(res.ResultCode==1){
+    console.log(res)
+    const dialogRef = this.dialog.open(DriverComments,{
+      data:{
+        name:res.Name,
+        RequestId:res.RequestId
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+})
+  };
 closeslider(){
   this.toggle.active.next(false);
   this.isWork=false;
@@ -187,5 +208,32 @@ export class Show_Result {
   constructor(public dialogRef: MatDialogRef<Show_Result>,
               @Inject(MAT_DIALOG_DATA) public data:any){
 
+  }
+}
+@Component({
+  selector: 'driver-comments',
+  templateUrl: 'driver-comment.html',
+})
+export class DriverComments {
+  Rank:number=0;
+  Comment:string=''
+  ratingComponentClick(clickObj: any): void {
+    this.Rank=clickObj.rating
+console.log(clickObj)
+
+  }
+  descrption:any;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private auth:AuthService) {
+
+  }
+  submitComment=()=>{
+    let data={
+      Token:localStorage.getItem('Token'),
+      Rank:this.Rank,
+      RequestId:this.data.RequestId,
+      Comment:this.Comment
+    };
+    console.log(data)
+    // this.auth.Insert_Comment()
   }
 }

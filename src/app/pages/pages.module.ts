@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {GetNamePlaceDialog, PagesComponent, Show_Result} from './pages.component';
+import {DriverComments, GetNamePlaceDialog, PagesComponent, Show_Result} from './pages.component';
 import {RouterModule, Routes} from '@angular/router';
 import { MapComponent } from './map/map.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UiSwitchModule} from 'ngx-toggle-switch';
 import {MatButtonToggleModule, MatDialogModule, MatFormFieldModule} from '@angular/material';
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
+import {RatingComponent} from '../core/rating/rating.component';
 const routes: Routes = [
   {
     path: '',
@@ -24,8 +25,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [PagesComponent, MapComponent, SlidemenuComponent, BottommenuComponent,DialogContentExampleDialog,driverdetails,GetNamePlaceDialog,Show_Result],
-  entryComponents:[DialogContentExampleDialog,driverdetails,GetNamePlaceDialog,Show_Result],
+  declarations: [PagesComponent, RatingComponent,MapComponent, SlidemenuComponent, BottommenuComponent,DialogContentExampleDialog,driverdetails,GetNamePlaceDialog,Show_Result,DriverComments],
+  entryComponents:[DialogContentExampleDialog,driverdetails,GetNamePlaceDialog,Show_Result,DriverComments],
   imports: [
     CommonModule,
     ReactiveFormsModule,

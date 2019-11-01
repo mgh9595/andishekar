@@ -4,15 +4,23 @@
     <div class="driver_image">
       <img src="./assets/icons/icons8-driver-100.png">
     </div>
-    <div class="driver_name"><span>{{data.FirstName}} {{data.LastName}}</span></div>
-    <div class="driver_license_plate">{{data.Number}}</div>
-    <div class="driver_details">
-      <span class="driver_mobile">
-         {{data.Mobile}}
+    <div class="driver_name"><span>{{data.name}}</span></div>
+<!--    <div class="driver_license_plate">{{data.Number}}</div>-->
+    <div class="driver_details driver_ratings">
+      <div class="driver_rating">
+        <app-rating  (ratingClick)='ratingComponentClick($event)'></app-rating>
+      </div>
+      <div class="driver_comment">
+        <div class="req_description">
+      <span class="desc_title">
+        ثبت نظر
       </span>
-      <span class="time_request">
-        زمان درخواست : {{data.FromTime}}
-      </span>
+          <div class="input_desc">
+            <textarea maxlength="80" [(ngModel)]="Comment"></textarea>
+          </div>
+        </div>
+      </div>
+        <button class="button hp_button" style="width: 30%;height: 40px" type="button" (click)="submitComment()">ثبت نظر</button>
     </div>
   </div>
 </mat-dialog-content>

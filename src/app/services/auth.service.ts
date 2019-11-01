@@ -21,6 +21,8 @@ export class AuthService {
   API_ENDPOINT_DELETE_MY_REQUEST = 'DeleteRequest';
   API_ENDPOINT_SELECT_PROFILE_DRIVER = 'SelectProfileDriver';
   API_ENDPOINT_DELETE_ADDRESS= 'DeleteAddress';
+  API_ENDPOINT_Check_Comment= 'SelectMainRequestClient';
+  API_ENDPOINT_INSERT_DRIVER_Comment= 'InsertComment';
   constructor(private http:HttpClient) {
 
   }
@@ -158,6 +160,28 @@ export class AuthService {
       Token:string,
   }){
     return this.http.post(this.API_URL+ this.API_ENDPOINT_SELECT_PROFILE_DRIVER,data).pipe(catchError(error => {
+      console.log(error);
+      return of(error)})
+    )
+  }
+
+ public Check_Comment(
+    data:{
+      Token:string,
+  }){
+    return this.http.post(this.API_URL+ this.API_ENDPOINT_Check_Comment,data).pipe(catchError(error => {
+      console.log(error);
+      return of(error)})
+    )
+  }
+ public Insert_Comment(
+    data:{
+      Token:string,
+      Rank:number,
+      RequestId:any,
+      Comment:string
+  }){
+    return this.http.post(this.API_URL+ this.API_ENDPOINT_INSERT_DRIVER_Comment,data).pipe(catchError(error => {
       console.log(error);
       return of(error)})
     )
