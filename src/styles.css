@@ -638,7 +638,7 @@ mat-dialog-content.mat-typography.mgh_content_dialog.mat-dialog-content h3{
   height: 100%;
   display: block;
   text-align: right;
-  padding: 10px 5px 0 5px;
+  padding: 10px 5px 60px 5px;
   overflow: scroll;
 }
 
@@ -1031,11 +1031,24 @@ span.place_texts::-webkit-scrollbar-thumb {
 span.place_text_text {
   margin: auto;
   transform: translateX(-12.5px);
+  width: 80%;
 }
 
 /*------commentCheack-------------*/
 .driver_details.driver_ratings{
   flex-flow: row wrap;
+  justify-content: center;
+}
+.driver_details.driver_ratings span.desc_title {
+   width: 100%;
+   color: #8c7602;
+   font-weight: 500;
+  direction: rtl;
+ }
+.driver_details.driver_ratings .input_desc textarea {
+  border-bottom: 1.5px solid #c2ad40;
+  -webkit-border-radius: 0;
+  caret-color: #c2ad40;
 }
 .driver_comment{
   width: 100%;

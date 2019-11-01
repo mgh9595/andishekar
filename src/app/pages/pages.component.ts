@@ -223,17 +223,21 @@ console.log(clickObj)
 
   }
   descrption:any;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private auth:AuthService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private auth:AuthService,public dialogRef: MatDialogRef<any>) {
 
   }
   submitComment=()=>{
-    let data={
+    let my_data={
       Token:localStorage.getItem('Token'),
       Rank:this.Rank,
       RequestId:this.data.RequestId,
       Comment:this.Comment
     };
-    console.log(data)
-    // this.auth.Insert_Comment()
+    console.log(my_data)
+    this.auth.Insert_Comment(my_data).subscribe(res=>{
+      if(res.ResultCode==1){
+        this.dialogRef.close();
+      }
+    })
   }
 }
