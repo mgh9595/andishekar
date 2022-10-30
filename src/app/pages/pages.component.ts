@@ -172,7 +172,7 @@ Show_message=(meessage)=>{
       Token:localStorage.getItem('Token')
     };
 this.auth.Check_Comment(data).subscribe(res=>{
-  if(res.ResultCode==1){
+  if(res.ResultCode==1&&res.RequestId!==0){
     console.log(res)
     const dialogRef = this.dialog.open(DriverComments,{
       data:{
@@ -219,7 +219,6 @@ export class DriverComments {
   Comment:string=''
   ratingComponentClick(clickObj: any): void {
     this.Rank=clickObj.rating
-console.log(clickObj)
 
   }
   descrption:any;
@@ -233,7 +232,6 @@ console.log(clickObj)
       RequestId:this.data.RequestId,
       Comment:this.Comment
     };
-    console.log(my_data)
     this.auth.Insert_Comment(my_data).subscribe(res=>{
       if(res.ResultCode==1){
         this.dialogRef.close();

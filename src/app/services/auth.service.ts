@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
@@ -136,7 +136,14 @@ export class AuthService {
       return of(error)})
     )
   }
-
+  public getAutoCompleteResult(
+    lat,lang,search){
+    let header =  new HttpHeaders().set('Api-Key', 'service.256bca0eabe743fbb4afa4e7cfc1f35a');
+    return this.http.get(`https://api.neshan.org/v1/search?term=${search}&lat=${lat}&lng=${lang}`,{headers:header}).pipe( catchError(error => {
+      console.log(error);
+      return of(error)})
+    )
+  }
   public SelectMyRequest(
     data:{
       Token:string,

@@ -7,7 +7,7 @@ import {BehaviorSubject} from 'rxjs';
 export class ToggledesService {
 isSource:BehaviorSubject<boolean>;
   coordinate_marker_source_txt:BehaviorSubject<any>;
-  coordinate_marker_source_loc:BehaviorSubject<any[]>;
+  coordinate_marker_source_loc:BehaviorSubject<any>;
   coordinate_marker_end_txt:BehaviorSubject<any[]>;
   coordinate_marker_end_loc:BehaviorSubject<any[]>;
   Type_final_req:BehaviorSubject<boolean>;

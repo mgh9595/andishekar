@@ -10,7 +10,6 @@ import { FinalComponent } from './final/final.component';
 import {NgxPermissionsModule, NgxPermissionsService} from 'ngx-permissions';
 import {PermissionService} from './services/permission.service';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
-import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -18,15 +17,14 @@ import { AgmCoreModule } from '@agm/core';
     AppComponent,
     FinalComponent
   ],
-  imports: [ 
+  imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     NgxPermissionsModule.forRoot(),
-    MatGoogleMapsAutocompleteModule,
-    AgmCoreModule.forRoot()
+    MatGoogleMapsAutocompleteModule
   ],
   providers: [    {
     provide: APP_INITIALIZER,

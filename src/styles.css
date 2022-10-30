@@ -17,6 +17,9 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video{
   font-family: IRANSans !important;
 }
+p{
+  margin: 0;
+}
 body,html{
   height: 100%;
 }
@@ -161,7 +164,8 @@ a{
   transition: all 0.4s ease;
 }
 .google_mgh_map{
-  height: 100%
+  height: 100%;
+  z-index: 0;;
 }
 .hp_inmap{
   height: 100%;
@@ -210,6 +214,41 @@ a{
   font-size: 14px;
   color: black;
 }
+.hp_menu_input span.autocomplete-neshan {
+   background: white;
+   display: flex;
+   flex-flow: column;
+  max-height: 200px;
+  overflow: auto;
+  position: absolute;
+  width: calc(100% - 20px);
+  padding: 20px 10px;
+  z-index: 99999;
+  text-align: right;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+ }
+.hp_menu_input span.autocomplete-neshan .a-value {
+  display: flex;
+  flex-flow: column;
+  /* border-bottom: 1px solid; */
+  padding: 5px;
+  background: #f4f4f4;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.hp_menu_input span.autocomplete-neshan .a-value span.title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.hp_menu_input span.autocomplete-neshan .a-value span.description {
+  font-size: 12px;
+  color: grey;
+  font-weight: 400;
+}
+
 .hp_menu_input input::placeholder{
   color: #999999;
 }
@@ -221,7 +260,7 @@ a{
   padding: 30px 0 0 0;
   width: 100%;
   display: block;
-  overflow: scroll;
+  overflow: auto;
 }
 .slide_contents {
   HEIGHT: 100%;
@@ -229,7 +268,7 @@ a{
   display: block;
   direction: rtl;
   text-align: right;
-  overflow: scroll;
+  overflow: auto;
 }
 .slide_contents li{
   list-style: none;
@@ -379,14 +418,14 @@ ul{
   margin-top: -10px;
 }
 .destinations_content,.time_content{
-  overflow: scroll;
+  overflow: auto;
   height: 50%;
   width: 100%;
   display: block;
 }
 
 .source_content{
-  overflow: scroll;
+  overflow: auto;
   height: 45%;
   width: 100%;
   display: block;
@@ -451,7 +490,30 @@ span.destination_index {
   justify-content: center;
   align-content: center;
   align-items: center;
+  cursor: pointer;
 }
+*::-webkit-scrollbar{
+   width: 6px;
+   height: 6px;
+   background: #F1F1F1;
+   border-radius: 10px;
+
+ }
+
+*::-webkit-scrollbar-button {
+   width: 6px;
+   height: 6px;
+   background: #c6c6c6;
+   border-radius: 1px
+ }
+
+*::-webkit-scrollbar-thumb {
+   width: 6px;
+   background: #B4B4B4;
+   height: 6px;
+   border-radius: 10px
+ }
+
 span.marker_place {
   padding: 4px 8px;
   background: white;
@@ -508,7 +570,7 @@ display: none;
   width: 100%;
 }
 .time_content {
-  overflow: scroll;
+  overflow: auto;
   min-height: 135.969PX;
   width: 100%;
   display: flex;

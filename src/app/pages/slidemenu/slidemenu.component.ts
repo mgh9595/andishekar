@@ -23,7 +23,7 @@ export class SlidemenuComponent implements OnInit {
   Requests:RequestsModel;
   driver_details:Driver_detailsModel;
   constructor(private form:FormBuilder,private auth:AuthService,public dialog: MatDialog,private ToggledesService:ToggledesService,private toggle :TogglemenuService ) {
-    this.getRequests();
+    // this.getRequests();
     this.repass=this.form.group({
       lastPass:[null, [Validators.required]],
       newPass:[null, [Validators.required]],
@@ -169,8 +169,8 @@ deleteRequest=(rId)=>{
   };
   Updaterequest=(index)=>{
     const old_request:RequestModel={...this.Requests.Requestes[index]};
-this.ToggledesService.coordinate_marker_source_loc.next([{Lat:old_request.FromLatitude,Lng:old_request.FromLongitude}])
-this.ToggledesService.coordinate_marker_source_txt.next(old_request.FromText);
+    this.ToggledesService.coordinate_marker_source_loc.next({Lat:old_request.FromLatitude,Lng:old_request.FromLongitude})
+    this.ToggledesService.coordinate_marker_source_txt.next(old_request.FromText);
     let end =[];
     let end_text=[];
     old_request.Destinations.forEach(value=>{
