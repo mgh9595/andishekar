@@ -24,11 +24,18 @@ isSource = true;
   coordinate_marker_end_old_marker  = [];
   searchBoxForm= new FormControl();
   searchBoxValues = [];
+  myIcon
   constructor(private toggle: TogglemenuService, private toggle_des: ToggledesService, private auth: AuthService) {
+    this.myIcon = L.icon({
+      iconUrl: 'https://developers.neshan.org/tools/static-map-maker/images/marker_red.png?v=2',
+      iconAnchor: [14.5, 41.5],
+      shadowSize: [68, 95],
+      shadowAnchor: [22, 94]
+    });
     this.toggle_des.coordinate_marker_source_loc.subscribe(res22 => {
       if(res22){
         this.coordinate_marker_source_old_marker?this.map.removeLayer( this.coordinate_marker_source_old_marker):null;
-        this.coordinate_marker_source_old_marker = L.marker([res22.Lat, res22.Lng]).addTo(this.map);
+        this.coordinate_marker_source_old_marker = L.marker([res22.Lat, res22.Lng],{icon:this.myIcon}).addTo(this.map);
       }
       // res22 ? this.coordinate_marker_sorce = [...res22] : null;
       // if (this.coordinate_marker_sorce.length > 0) {
@@ -79,7 +86,7 @@ isSource = true;
   onActive = () => {
 this.toggle.active.next(true);
 }
-print = () => {
+print = async () => {
   if (this.map) {
     this.langg = this.map.getCenter();
     if (this.isSource) {
@@ -87,14 +94,14 @@ print = () => {
         Lat: this.langg.lat,
         Lng: this.langg.lng
       });
-      // this.getLocationText({
-      //   Latitude: this.langg.lat,
-      //   Longitude: this.langg.lng
-      // }).subscribe(res1 => {
-      //   if (res1.ResultCode == 1) {
-      //     this.toggle_des.coordinate_marker_source_txt.next(res1.Address);
-      //   }
-      // });
+      this.getLocationText({
+        Latitude: this.langg.lat,
+        Longitude: this.langg.lng
+      }).subscribe(res1 => {
+        if (res1.ResultCode == 1) {
+          this.toggle_des.coordinate_marker_source_txt.next(res1.Address);
+        }
+      });
       this.toggle_des.coordinate_marker_source_txt.next('هوشنگ آباد ثیثی ');
       this.toggle_des.isSource.next(false);
       this.show_marker = true;
@@ -106,18 +113,18 @@ print = () => {
           old_value = [...this.toggle_des.coordinate_marker_end_loc.getValue()];
         }
         this.toggle_des.coordinate_marker_end_loc.next(old_value.concat({Lat: this.langg.lat, Lng: this.langg.lng}));
-        // this.getLocationText({
-        //   Latitude: this.langg.lat,
-        //   Longitude: this.langg.lng
-        // }).subscribe(res3 => {
-        //   if (res3.ResultCode == 1) {
-        //     let old_text = [];
-        //     if (this.toggle_des.coordinate_marker_end_txt.getValue()) {
-        //       old_text = [...this.toggle_des.coordinate_marker_end_txt.getValue()];
-        //     }
-        //     this.toggle_des.coordinate_marker_end_txt.next(old_text.concat(res3.Address));
-        //   }
-        // });
+        this.getLocationText({
+          Latitude: this.langg.lat,
+          Longitude: this.langg.lng
+        }).subscribe(res3 => {
+          if (res3.ResultCode == 1) {
+            let old_text = [];
+            if (this.toggle_des.coordinate_marker_end_txt.getValue()) {
+              old_text = [...this.toggle_des.coordinate_marker_end_txt.getValue()];
+            }
+            this.toggle_des.coordinate_marker_end_txt.next(old_text.concat(res3.Address));
+          }
+        });
       let old_text = [];
       if (this.toggle_des.coordinate_marker_end_txt.getValue()) {
         old_text = [...this.toggle_des.coordinate_marker_end_txt.getValue()];
