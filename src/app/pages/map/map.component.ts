@@ -102,7 +102,7 @@ print = async () => {
           this.toggle_des.coordinate_marker_source_txt.next(res1.Address);
         }
       });
-      this.toggle_des.coordinate_marker_source_txt.next('هوشنگ آباد ثیثی ');
+      // this.toggle_des.coordinate_marker_source_txt.next('هوشنگ آباد ثیثی ');
       this.toggle_des.isSource.next(false);
       this.show_marker = true;
       }
@@ -125,11 +125,11 @@ print = async () => {
             this.toggle_des.coordinate_marker_end_txt.next(old_text.concat(res3.Address));
           }
         });
-      let old_text = [];
-      if (this.toggle_des.coordinate_marker_end_txt.getValue()) {
-        old_text = [...this.toggle_des.coordinate_marker_end_txt.getValue()];
-      }
-      this.toggle_des.coordinate_marker_end_txt.next(old_text.concat(' خبثبهبا ثبعاثباعثبثبذثب ثبهثبها'));
+      // let old_text = [];
+      // if (this.toggle_des.coordinate_marker_end_txt.getValue()) {
+      //   old_text = [...this.toggle_des.coordinate_marker_end_txt.getValue()];
+      // }
+      // this.toggle_des.coordinate_marker_end_txt.next(old_text.concat(' خبثبهبا ثبعاثباعثبثبذثب ثبهثبها'));
         this.show_marker = true;
       }
 
